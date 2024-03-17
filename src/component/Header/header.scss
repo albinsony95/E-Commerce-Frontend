@@ -1,0 +1,23 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.header{
+    @include flex-box(column,flex-start,center);
+    width:100%;
+    background-color:$pluton-blue ;
+    &__logoBox{
+        padding:0rem;
+    }
+    &__tabSection{
+        width:100%;
+        //padding-right: 1rem;
+        @include flex-box(row,space-evenly,center);
+    }
+    &__menuItems{
+        color: $mercury;
+        padding:.5rem;
+    }
+    &__link{
+        text-decoration: none;
+    }
+}

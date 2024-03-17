@@ -1,0 +1,46 @@
+@mixin avatar(){
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+@mixin flex-box($direction, $justifyContent, $align){
+    display:flex;
+    flex-direction:$direction;
+    justify-content: $justifyContent;
+    align-items: $align;
+}
+@mixin btnBorder(){
+    border:none;
+    border-radius: 5px;
+}
+@mixin img($width,$height){
+    width:$width;
+    height:$height;
+}
+@mixin icon(){
+    width:32px;
+    height:32px;
+}
+@mixin controlIcon(){
+    width:20px;
+    height:20px;
+    padding:2px;
+}
+@mixin avatar(){
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin:10px;
+}
+@mixin desktop {
+    @media screen and (min-width: 1030px) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media screen and (min-width: 767px) {
+        @content;
+    }
+}

@@ -1,0 +1,23 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.hero{
+    @include flex-box(column-reverse,center,center);
+    background: linear-gradient(0.25turn, #0b0918, #252425, #252425, #0b0918);    
+    &__infoContainer{
+        @include flex-box(column,center,center);
+    }
+    &__imageBox{
+        object-fit:cover;
+    }
+    &__image{
+        width:100%;
+    }
+    &__title{
+        color:$pluton-white;
+    }
+    &__description{
+        color:$pluton-white;
+        padding: .5rem;
+    }
+}

@@ -1,0 +1,27 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.detail{
+    width:100%;
+    @include flex-box(column,center,center);
+    &__container{
+        padding:1rem;
+    }
+    &__container-mainImgBox{
+        max-width: 90%;
+        max-height: 20rem;
+    }
+    &__mainImgBox--img{
+        object-fit: cover;
+        max-width: 100%;
+    }
+    &__container-subImgBox{
+        @include flex-box(row,center,center);
+        max-width: 100%;
+        max-height: 15rem;
+    }
+    &__subImgBox-imgbox--img{
+        object-fit: cover;
+        width: 90%;
+    }
+}

@@ -1,0 +1,47 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+//@use '../../styles/partials/globals' as *;
+
+.footer{
+    @include flex-box(column,flex-start,flex-start);
+    background-color: $pluton-blue;
+    color:$pluton-white;
+    @include tablet{
+        @include flex-box(row,flex-start,flex-start);
+    }
+    @include desktop{
+        @include flex-box(row,flex-start,flex-start);
+
+    }
+    &__container{
+        @include flex-box(column,flex-start,flex-start);
+        padding:1rem;
+        @include tablet{
+            width:33%;
+        }
+        @include desktop{
+            
+        }
+    }
+    &__title{
+        padding:0.5rem 0 .5rem 0;
+        margin: 0;
+        @include tablet{
+            
+        }
+        @include desktop{
+
+        }
+    }
+    &__data{
+        padding:0;
+        margin: 0;
+        color: $mercury;
+        @include tablet{
+            
+        }
+        @include desktop{
+            
+        }
+    }
+}
