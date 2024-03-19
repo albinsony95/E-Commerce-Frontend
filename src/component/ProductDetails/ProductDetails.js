@@ -1,17 +1,16 @@
 import './productDetails.scss';
 import { useState, useEffect, useContext } from 'react';
-import {Link, useParams} from 'react-router-dom'
+import {Link, useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { ProductContext } from '../ProductContextProvider/ProductContextProvider';
-//import QuantitySelector from '../QuantitySelector/QuantitySelector';
-//import QuantitySelectorProdDetail from '../QuantitySelectorProdDetail/QuantitySelectorProdDetail';
 import { CartContext } from '../ProductContextProvider/ProductContextProvider';
 
 
 function ProductDetails() {
+    const navigate = useNavigate();
     const params=useParams();
     const [price, setPrice] = useState(0);
-    const { addToCart } = useContext(CartContext); 
+    const { cart, addToCart, increaseQuantity, decreaseQuantity } = useContext(CartContext);
     const [selectedProduct,setSelectedProduct] = useState();
     const [Images,setImages] =useState([]);
     const [quantity, setQuantity] = useState(1);
@@ -49,10 +48,6 @@ function ProductDetails() {
             <h5>Product is unavailable</h5>
         );
     } 
-    const handleAddToCart = () => {
-        addToCart({ ...selectedProduct, quantity  });
-        console.log(quantity);
-    };
 
     const handleDecrease = () => {
         if (quantity > 1) {
@@ -62,6 +57,18 @@ function ProductDetails() {
     const handleIncrease = () => {
         setQuantity(quantity + 1);
     };
+    const handleAddToCart = () => {
+        const item = {...selectedProduct,quantity};
+        console.log(item)
+        if(item){
+            addToCart({...selectedProduct,quantity});
+        }
+        else{
+        console.log(quantity);
+        }
+        navigate('/Cart');
+    };
+    
 
 return(
     <section className='detail'>
@@ -93,7 +100,9 @@ return(
                 </div>
             </article>
         </section>
-        <button className='detail__addCartButton' onClick={handleAddToCart}>Add to Cart</button>
+        {/* <Link className='link' to='/Cart' > */}
+            <button className='detail__addCartButton' onClick={handleAddToCart}>Add to Cart</button>
+        {/* </Link> */}
     </section>
 )
 }

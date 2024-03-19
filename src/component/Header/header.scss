@@ -19,5 +19,23 @@
     }
     &__link{
         text-decoration: none;
+        color: $pluton-white;
+    }
+    &__cartIcon{
+        position:relative;
+        padding:.5rem;
+    }
+    &__cartCount{
+
+        position:absolute;
+        //padding:5px;
+        // width:10px;
+        // height:10px;
+        // border-radius: 50%;
+        right:1px;
+        top:1px;
+        font-weight: 500;
+        color: #ff0000;
+        //background-color: red;
     }
 }

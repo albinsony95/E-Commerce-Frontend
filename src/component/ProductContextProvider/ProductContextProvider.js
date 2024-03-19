@@ -8,6 +8,9 @@ const ProductContextProvider = ({children}) => {
     const [AllProducts, setAllProducts] = useState([]);
     const [selectedProd, setSelectedProd]=useState([]);
     const [cart, setCart] = useState([]);
+    const[subTotal,setSubTotal] = useState(0);
+    const[shipping,setShipping] = useState(7.99);
+    const[Total,setTotal] =useState(0);
     const url = 'http://localhost:8080/products';
 
     const fetchData = async () => {
@@ -29,8 +32,8 @@ const ProductContextProvider = ({children}) => {
     useEffect(() => {
         console.log(cart);
     }, [cart]);
-    const addToCart = (product,quantity) => {
-        setCart([...cart, { ...product, quantity }]);
+    const addToCart = (item) => {
+        setCart([...cart, { ...item }]);
     };
 
     const removeFromCart = (productId) => {
@@ -54,12 +57,36 @@ const ProductContextProvider = ({children}) => {
             return item;
         }));
     };
+
+    useEffect(() => {
+        calculateTotal();
+    }, [cart]);
+
+    const calculateTotal = () => {
+        let totalAmount = 0;
+
+        // Calculate subtotal
+        cart.forEach(item => {
+            totalAmount += parseFloat(item.quantity) * parseFloat(item.price);
+            console.log(item);
+        });
+        setSubTotal(totalAmount);
+
+        // Calculate total including shipping
+        const totalWithShipping = totalAmount + shipping;
+        setTotal(totalWithShipping);
+    };
+
+    
     const contextValue = {
         productHandleSelect,
         selectedProd
     };
     const cartContextValue = {
         cart,
+        subTotal,
+        shipping,
+        Total,
         addToCart,
         removeFromCart,
         increaseQuantity,

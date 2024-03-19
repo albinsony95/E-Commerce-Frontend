@@ -7,6 +7,9 @@ import Footer from './component/Footer/Footer';
 import Home from './component/Home/Home';
 import Products from './component/Products/Products';
 import ProductDetails from './component/ProductDetails/ProductDetails';
+import Cart from './component/Cart/Cart' 
+import Checkout from './component/Checkout/Checkout'
+
 import {ProductContextProvider, ProductContext} from './component/ProductContextProvider/ProductContextProvider'
 
 //debounce function for search to avoid many api calls
@@ -21,6 +24,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Products" element={<Products />} />
         <Route path="/Products/:prodId" element={<ProductDetails />} /> 
+        <Route path="/Cart" element={<Cart />} />
+        <Route path="/Checkout" element={<Checkout />} />
       </Routes>
       <Footer />
     </BrowserRouter>
