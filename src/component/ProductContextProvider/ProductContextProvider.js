@@ -8,9 +8,10 @@ const ProductContextProvider = ({children}) => {
     const [AllProducts, setAllProducts] = useState([]);
     const [selectedProd, setSelectedProd]=useState([]);
     const [cart, setCart] = useState([]);
-    const[subTotal,setSubTotal] = useState(0);
-    const[shipping,setShipping] = useState(7.99);
-    const[Total,setTotal] =useState(0);
+    const [subTotal,setSubTotal] = useState(0);
+    const [shipping,setShipping] = useState(7.99);
+    const [Total,setTotal] = useState(0);
+    const [confirm,setConfirm] = useState();
     const url = 'http://localhost:8080/products';
 
     const fetchData = async () => {
@@ -65,18 +66,27 @@ const ProductContextProvider = ({children}) => {
     const calculateTotal = () => {
         let totalAmount = 0;
 
-        // Calculate subtotal
+
         cart.forEach(item => {
             totalAmount += parseFloat(item.quantity) * parseFloat(item.price);
             console.log(item);
         });
         setSubTotal(totalAmount);
 
-        // Calculate total including shipping
         const totalWithShipping = totalAmount + shipping;
         setTotal(totalWithShipping);
     };
-
+    //useEffect(())
+    const handleConfirm = (resConfirm) => {
+        setConfirm(resConfirm);
+        console.log(resConfirm);
+        if(resConfirm){
+            console.log(confirm);
+        }
+        else{
+            console.log('response not updated');
+        }
+    }
     
     const contextValue = {
         productHandleSelect,
@@ -87,6 +97,7 @@ const ProductContextProvider = ({children}) => {
         subTotal,
         shipping,
         Total,
+        handleConfirm,
         addToCart,
         removeFromCart,
         increaseQuantity,

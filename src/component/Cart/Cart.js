@@ -8,6 +8,7 @@ import { ProductContext } from '../ProductContextProvider/ProductContextProvider
 import { CartContext } from '../ProductContextProvider/ProductContextProvider';
 
 function Cart() {
+    window.scrollTo(0,0);
     const { cart, addToCart, increaseQuantity, decreaseQuantity, subTotal, shipping, Total } = useContext(CartContext);
     const navigate = useNavigate();
     // useEffect(() => {

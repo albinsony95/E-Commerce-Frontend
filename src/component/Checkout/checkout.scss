@@ -1,0 +1,86 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.checkout {
+    width:100%;
+    &__container {
+        @include flex-box(column,flex-start,flex-start);
+        padding: .5rem;
+    }
+    &__container-shipdata{
+        @include flex-box(column,flex-start,flex-start);
+        width:95%;
+
+    }
+    &__container-formbox{
+        width:100%;
+
+    }
+    &__container-form{
+        //width:100%;
+        padding-right: .5rem;
+
+    }
+    &__form-inputbox {
+        position: relative;
+        width: 100%;
+        margin-bottom: .5rem;
+    }
+
+    &__form--input {
+        //z-index: 1;
+        width: 100%;
+        padding: .7rem;
+        border: 2px solid rgba(56, 52, 52, 0.25);
+        border-radius: 5px;
+        outline: none;
+        color: #000;
+        font-size: 1em;
+        transition: border-color 0.5s ease-in-out; /* Added transition for border color */
+    }
+    
+    &__form--lbl {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 10px;
+        color: rgba(0, 0, 0, 0.25);
+        text-transform: uppercase;
+        transition: transform 0.2s ease-in-out, color 0.2s ease-in-out, font-size 0.2s ease-in-out;    }
+
+        &__form--input:valid~ .checkout__form--lbl,
+        &__form--input:focus ~ .checkout__form--lbl {
+        color: #927d7d;
+        transform: translateX(10px) translate(-7px);
+        font-size: 0.65em;
+        padding: 0 10px;
+        padding-bottom: 5px;
+        letter-spacing: 0.2em;
+    }
+
+    &__form--input:valid,
+    &__form--input:focus {
+        border: 2px solid #927d7d;
+    }
+    &__buttonHolder{
+        width:100%;
+    }
+    &__form--btn{
+        font-size: 1.2em;
+        width:100%;
+        margin: 0%;
+        border-radius: 10px;;
+        background-color: #3b3769;
+        color: $pluton-white;
+        padding:1rem;
+        margin: .5rem 0 .25rem 0;
+    }
+    // &__form--btncheckout{
+    //     width:100%;
+    //     margin: 0%;
+    //     background-color: $pluton-blue;
+    //     color: $pluton-white;
+    // }
+    
+}
+
