@@ -12,6 +12,8 @@ const ProductContextProvider = ({children}) => {
     const [shipping,setShipping] = useState(7.99);
     const [Total,setTotal] = useState(0);
     const [confirm,setConfirm] = useState();
+    const [cartChanged, setCartChanged] = useState(true);
+
     const url = 'http://localhost:8080/products';
 
     const fetchData = async () => {
@@ -30,15 +32,15 @@ const ProductContextProvider = ({children}) => {
         setSelectedProd(prod);
     };
 
-    useEffect(() => {
-        console.log(cart);
-    }, [cart]);
     const addToCart = (item) => {
         setCart([...cart, { ...item }]);
+        setCartChanged(true);
+
     };
 
     const removeFromCart = (productId) => {
         setCart(cart.filter(item => item.id !== productId));
+        setCartChanged(true);
     };
 
     const increaseQuantity = (productId) => {
@@ -48,6 +50,7 @@ const ProductContextProvider = ({children}) => {
             }
             return item;
         }));
+        setCartChanged(true);
     };
 
     const decreaseQuantity = (productId) => {
@@ -57,35 +60,45 @@ const ProductContextProvider = ({children}) => {
             }
             return item;
         }));
+        setCartChanged(true);
     };
 
     useEffect(() => {
-        calculateTotal();
-    }, [cart]);
-
+        if (cartChanged) {
+            calculateTotal();
+            setCartChanged(false); // Reset the flag after calculation
+        }
+    }, [cart, cartChanged]);
+    
     const calculateTotal = () => {
         let totalAmount = 0;
 
 
         cart.forEach(item => {
             totalAmount += parseFloat(item.quantity) * parseFloat(item.price);
-            console.log(item);
         });
         setSubTotal(totalAmount);
 
         const totalWithShipping = totalAmount + shipping;
         setTotal(totalWithShipping);
+        setCartChanged(true);
+
     };
-    //useEffect(())
+
     const handleConfirm = (resConfirm) => {
-        setConfirm(resConfirm);
-        console.log(resConfirm);
-        if(resConfirm){
+        if (resConfirm) {
+            setConfirm(resConfirm);
+            console.log("response"+resConfirm);
             console.log(confirm);
-        }
-        else{
-            console.log('response not updated');
-        }
+            //setConfirm((prevConfirm) => [...prevConfirm, resConfirm]);
+          } else {
+            console.log('resConfirm is empty or null');
+          }
+    }
+
+    const emptyCart = () => {
+        setCart([]);
+        setCartChanged(true);
     }
     
     const contextValue = {
@@ -101,7 +114,8 @@ const ProductContextProvider = ({children}) => {
         addToCart,
         removeFromCart,
         increaseQuantity,
-        decreaseQuantity
+        decreaseQuantity,
+        emptyCart
     };
     return (
         <ProductContext.Provider value={contextValue}>

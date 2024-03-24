@@ -7,6 +7,7 @@ import { CartContext } from '../ProductContextProvider/ProductContextProvider';
 
 
 function ProductDetails() {
+    //window.scrollTo(0,0);
     const navigate = useNavigate();
     const params=useParams();
     const [price, setPrice] = useState(0);
@@ -91,18 +92,19 @@ return(
             </article>
             <article className='detail__container-info2'>
                 <div className='detail__container-info2-quantity'>
-                    <button onClick={handleDecrease}>-</button>
-                    <span>{quantity}</span>
-                    <button onClick={handleIncrease}>+</button>
+                    <button className='detail__container-info2-btnQuantity' onClick={handleDecrease}>-</button>
+                    <span className='detail__container-info2-Quantitydata' >{quantity}</span>
+                    <button className='detail__container-info2-btnQuantity' onClick={handleIncrease}>+</button>
                 </div>
                 <div className='detail__container-info2-price'>
-                    <p>${price}</p>
+                    <p className='detail__container-info2-pricedata'>${price}</p>
                 </div>
             </article>
-        </section>
-        {/* <Link className='link' to='/Cart' > */}
             <button className='detail__addCartButton' onClick={handleAddToCart}>Add to Cart</button>
-        {/* </Link> */}
+
+        </section>
+
+
     </section>
 )
 }

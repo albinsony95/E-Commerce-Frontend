@@ -3,14 +3,28 @@
 
 .checkout {
     width:100%;
+    &__heading{
+        padding-left: 1rem;
+    }
     &__container {
         @include flex-box(column,flex-start,flex-start);
         padding: .5rem;
+        @include desktop{
+            @include flex-box(row,flex-start,flex-start);
+            flex-wrap: wrap;
+        }
     }
     &__container-shipdata{
         @include flex-box(column,flex-start,flex-start);
         width:95%;
-
+        @include desktop{
+            width:40%;
+            border-left: 1px solid #927d7d;
+            padding-left: 1rem;;
+        }
+    }
+    &__container-shipAddress{
+        margin-top: 0;
     }
     &__container-formbox{
         width:100%;
@@ -74,13 +88,10 @@
         color: $pluton-white;
         padding:1rem;
         margin: .5rem 0 .25rem 0;
-    }
-    // &__form--btncheckout{
-    //     width:100%;
-    //     margin: 0%;
-    //     background-color: $pluton-blue;
-    //     color: $pluton-white;
-    // }
-    
+        @include desktop{
+            width:20%;
+            margin-left: 2rem;
+        }
+    } 
 }
 

@@ -1,0 +1,31 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+
+
+.confirm{
+    width:100%;
+    &__container{
+        @include flex-box(column,flex-start,flex-start);
+        padding:0.5rem;
+    }
+    &__detail-track{
+        @include flex-box(row,flex-start,center);
+    }
+    &__detail-number-data{
+        font-size: 1.3em;
+        color: rgb(9, 102, 9);
+        margin:0;
+        padding-left: 1rem;;
+    }
+    &__btnHome{
+        font-size: 1.2em;
+        width:100%;
+        margin: 0%;
+        border-radius: 10px;;
+        background-color: #3b3769;
+        color: $pluton-white;
+        padding:1rem;
+        margin: .5rem 0 .25rem 0;
+    }
+}

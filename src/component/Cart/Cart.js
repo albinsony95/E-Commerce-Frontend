@@ -11,11 +11,7 @@ function Cart() {
     window.scrollTo(0,0);
     const { cart, addToCart, increaseQuantity, decreaseQuantity, subTotal, shipping, Total } = useContext(CartContext);
     const navigate = useNavigate();
-    // useEffect(() => {
-    //     if(Cart.length==0){
-    //         return(<h5>Cart is empty</h5>)
-    //     }
-    // },[cart])
+
     const handleCheckout = () => { navigate('/checkout');}
     
     
@@ -25,18 +21,19 @@ function Cart() {
                 <h5>Cart is empty</h5>
             ):(
             <React.Fragment>
-            <h5>Cart</h5>
+            <h4 className='cart__heading'>Cart</h4>
             <section className='cart__container'>
-                {cart.map(item => 
-                    <CartProduct cartProd={item} />
-                    )}
-
+                <section className='cart__container-items'>
+                    {cart.map(item => 
+                        <CartProduct cartProd={item} />
+                        )}
+                </section>
                 <article className='cart__container-summaryBox'>
                     <div className='cart__container-summaryBox-subtot'>
                         <p className='cart__container-summaryBox--lblsubtotal'>Subtotal: </p>
-                        <p className='cart__container-summaryBox--subtotal'>{subTotal}</p>
+                        <p className='cart__container-summaryBox--subtotal'>${subTotal}</p>
                     </div>
-                    <div className='cart__container-summaryBox-ship'>
+                    <div className='cart__container-summaryBox-subtot'>
                         <p className='cart__container-summaryBox--lblsubtotal'>Shipping Fee: </p>
                         <p className='cart__container-summaryBox--subtotal'>$7.99</p>
                     </div>

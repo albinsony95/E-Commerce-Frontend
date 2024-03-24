@@ -17,9 +17,11 @@ function Header() {
 
   return (
     <section className='header'>
-        <div className='header__logoBox'>
-            <img src={logo} alt="logo" />
-        </div>
+        <Link className='header__Link' to={'/'}>
+            <div className='header__logoBox'>
+                <img src={logo} alt="logo" />
+            </div>
+        </Link>
         <section className='header__tabSection'>
             <Link className='header__link' to={'/'}>
                 <h4 className='header__menuItems'>Home</h4>

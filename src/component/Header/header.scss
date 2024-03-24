@@ -5,13 +5,26 @@
     @include flex-box(column,flex-start,center);
     width:100%;
     background-color:$pluton-blue ;
+    @include tablet{
+        @include flex-box(row,flex-start,center);
+    }
+    @include desktop{
+        @include flex-box(row,flex-start,center);
+
+    }
     &__logoBox{
-        padding:0rem;
+        padding:1rem;
     }
     &__tabSection{
         width:100%;
-        //padding-right: 1rem;
         @include flex-box(row,space-evenly,center);
+        @include tablet{
+            @include flex-box(row,flex-end,center);
+        }
+        @include desktop{
+            @include flex-box(row,flex-end,center);
+    
+        }
     }
     &__menuItems{
         color: $mercury;
@@ -20,22 +33,22 @@
     &__link{
         text-decoration: none;
         color: $pluton-white;
+        @include tablet{
+            margin-right:2rem;
+        }
+        @include desktop{
+            margin-right:2rem;
+        }
     }
     &__cartIcon{
         position:relative;
         padding:.5rem;
     }
     &__cartCount{
-
         position:absolute;
-        //padding:5px;
-        // width:10px;
-        // height:10px;
-        // border-radius: 50%;
         right:1px;
         top:1px;
         font-weight: 500;
         color: #ff0000;
-        //background-color: red;
     }
 }

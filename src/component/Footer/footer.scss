@@ -44,4 +44,11 @@
             
         }
     }
+    &__icon{
+        margin-right: 1rem;
+        margin-top: 1rem;
+    }
+    &__icon:hover{
+        color:blue;
+    }
 }

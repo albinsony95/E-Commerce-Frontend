@@ -17,7 +17,7 @@ function Checkout() {
         const HandleOrderSubmit = async (e) => {
             e.preventDefault();
             if (formRef.current.checkValidity()) {
-                const { firstName, lastName, streetAddress1, city, zipcode, country } = formRef.current;
+                const { firstName, lastName, streetAddress1, city, zipcode, country, phone, email } = formRef.current;
                 const order = {
                     firstName: firstName.value,
                     lastName: lastName.value,
@@ -25,6 +25,8 @@ function Checkout() {
                     city: city.value,
                     zipcode: zipcode.value,
                     country: country.value,
+                    phone: phone.value,
+                    email: email.value,
                     products: cart,
                     subTotal: subTotal,
                     shipHandling: shipping,
@@ -33,14 +35,17 @@ function Checkout() {
         
                 try {
                     const response = await axios.post(url, order);
-                    setResConfirm(response.data);
+                    console.log(response);
+                    //setResConfirm((prevRes) => [...prevRes, response.data]);
                     handleConfirm(response.data);
-                    console.log(response.data);
+                    navigate('/Confirm',{state:response.data});
+                   // console.log(resConfirm);
                 } catch (error) {
                     console.log("error fetching Id" + error);
                 }
-
-            } else {
+                
+            } 
+            else {
                 formRef.current.querySelector(':invalid').focus();
             }
         };
@@ -49,7 +54,7 @@ function Checkout() {
 
     return(
         <section className='checkout'>
-            <h5>checkout</h5>
+            <h5 className='checkout__heading'>checkout</h5>
             <section className='checkout__container'>
                 <section className='checkout__container-summary'>
                     <article className='checkout__container-cart'>
@@ -71,33 +76,41 @@ function Checkout() {
                                 <label className='checkout__form--lbl'>Last Name*</label>
                             </div>
                             <div className='checkout__form-inputbox'>
-                                <input className='checkout__form--input' name="streetAddress1"  required="required"/>
+                                <input className='checkout__form--input' name="streetAddress1"   required="required"/>
                                 <label className='checkout__form--lbl'>Street Address*</label>
                             </div>
                             <div className='checkout__form-inputbox'>
-                                <input className='checkout__form--input' name="city"  required="required"/>
+                                <input className='checkout__form--input' name="city"   required="required"/>
                                 <label className='checkout__form--lbl'>City*</label>
                             </div>
                             <div className='checkout__form-inputbox'>
-                                <input className='checkout__form--input' name="zipcode"  required="required"/>
+                                <input className='checkout__form--input' name="zipcode"   required="required"/>
                                 <label className='checkout__form--lbl'>Zipecode*</label>
                             </div>
                             <div className='checkout__form-inputbox'>
-                                <input className='checkout__form--input' name="country"  required="required"/>
+                                <input className='checkout__form--input' name="country"   required="required"/>
                                 <label className='checkout__form--lbl'>Country*</label>
+                            </div>
+                            <div className='checkout__form-inputbox'>
+                                <input className='checkout__form--input' name="email"   required="required"/>
+                                <label className='checkout__form--lbl'>Email*</label>
+                            </div>
+                            <div className='checkout__form-inputbox'>
+                                <input className='checkout__form--input' name="phone"   required="required"/>
+                                <label className='checkout__form--lbl'>Phone*</label>
                             </div>
                         <h5>payment method</h5>
                             <article className='checkout__container-form'>
                                 <div className='checkout__form-inputbox'>
-                                    <input className='checkout__form--input' name="CardholderName"  required="required"/>
+                                    <input className='checkout__form--input' name="CardholderName" required="required"/>
                                     <label className='checkout__form--lbl'>CardHolder Name*</label>
                                 </div>
                                 <div className='checkout__form-inputbox'>
-                                    <input className='checkout__form--input' name="CardNumber"  required="required"/>
+                                    <input className='checkout__form--input' name="CardNumber"   required="required"/>
                                     <label className='checkout__form--lbl'>Card Number*</label>
                                 </div>
                                 <div className='checkout__form-inputbox'>
-                                    <input className='checkout__form--input' name="CVV"  required="required"/>
+                                    <input className='checkout__form--input' name="CVV"   required="required"/>
                                     <label className='checkout__form--lbl'>CVV*</label>
                                 </div>
                             </article>

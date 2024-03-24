@@ -1,5 +1,9 @@
 import React from 'react'
 import './footer.scss';
+import facebook from '../../assets/icons/Icon-facebook.svg'
+import twitter from '../../assets/icons/Icon-twitter.svg'
+import instagram from '../../assets/icons/Icon-instagram.svg'
+
 
 function Footer () {
   return (
@@ -22,6 +26,11 @@ function Footer () {
         </section>
         <section className='footer__container'>
             <h4 className='footer__title'>Social</h4>
+            <article className='footer__items'>
+                <img className='footer__icon' src={facebook} alt='facebook-icon'/>
+                <img className='footer__icon' src={twitter} alt='facebook-icon'/>
+                <img className='footer__icon' src={instagram} alt='facebook-icon'/>
+            </article>
         </section>
         
     </footer>

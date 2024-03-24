@@ -1,3 +1,29 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/variables' as *;
 
+.products{
+    width:100%;
+    &__container{
+        @include flex-box(column,flex-start,flex-start);
+        padding: 1rem;
+        @include tablet{
+            @include flex-box(row, center, center);
+            flex-wrap: wrap;
+        }
+        @include desktop{
+            @include flex-box(row, center, center);
+            flex-wrap: wrap;
+        }
+    }
+    &__link{
+        @include flex-box(column, center, center);
+        text-decoration: none;
+        padding:0;
+        @include tablet{
+            width:50%;
+          }
+          @include desktop{
+            width:20%;
+          }
+    }
+}
