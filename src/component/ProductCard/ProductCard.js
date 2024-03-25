@@ -16,7 +16,7 @@ function ProductCard ({bestProd}) {
             <article className='card__detailsBox'>
                 <h4 className='card__detailsBox--title'>{bestProd.title}</h4>
                 <div className='card__detailsBox-pricebox'>
-                    <span className='card__detailBox--dollar'>$</span>
+                    <span className='card__detailsBox--dollar'>$</span>
                     <p className='card__detailsBox--price'>{bestProd.price}</p>
                 </div>
             </article>

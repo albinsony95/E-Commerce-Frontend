@@ -1,0 +1,51 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+
+.cart{
+    width:100%;
+    &__container{
+        padding:0.5rem;
+        @include desktop{
+            @include flex-box(row,space-between,center);
+            flex-wrap: wrap;
+        }
+    }
+    &__heading{
+        padding-left: 1rem;;
+    }
+    &__container-summaryBox{
+        background-color: bisque;
+        padding: 5px;
+        border-radius: 5px;
+        @include flex-box(column,space-between,flex-start);
+        @include desktop{
+            width: 50%;
+        }
+    }
+    &__container-summaryBox-subtot{
+        width:95%;
+        @include flex-box(row,space-between,flex-start);
+        border-bottom: 1px solid #423030;
+    }
+    &__container-summaryBox--lblsubtotal{
+        font-weight: 500;
+    }
+    &__container-summaryBox--subtotal{
+        color:#3b3769;
+        font-weight: 500;
+    }
+    &__container--checkout{
+        font-size: 1.2em;
+        width:100%;
+        margin: 0%;
+        border-radius: 10px;;
+        background-color: #3b3769;
+        color: $pluton-white;
+        padding:1rem;
+        margin: .5rem 0 .25rem 0;
+        @include desktop{
+            width:50%;
+        }
+    }
+
+}

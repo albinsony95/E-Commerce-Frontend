@@ -61,6 +61,16 @@
   &__detailsBox--title{
     padding-left:.5rem;
     margin:0;
+    color:brown;
+  }
+  // &__detailsBox-pricebox{
+  //   align-self: flex-end;
+  // }
+  &__detailsBox--dollar{
+    color:rgb(163, 4, 4);
+  }
+  &__detailsBox--price{
+    color:rgb(163, 4, 4);
   }
   &__detailsBox-pricebox{
     @include flex-box(row, flex-end, center);

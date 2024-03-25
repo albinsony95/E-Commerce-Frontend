@@ -26,28 +26,3 @@ function BestProducts({products}) {
 
 export default BestProducts;
 
-
-
-    // const params=useParams();
-    // const VideoId=params.videoId ? params.videoId : props.videoId;    
-    // const url=`http://localhost:8080/products/${prodId}`;
-    // const [prodId, setProdId]= useState(null);
-    // const [selectedProd, setSelectedProd] = useState();
-    // useEffect(() => {
-    //     if(prodId){
-    //         axios.get(url).then((res)=> {
-    //             setSelectedProd(res.data);
-    //         }).catch((error) => {
-    //             console.log("error fetching product" + error);
-    //         })
-    //     }
-    //     else {
-    //         console.log("no id found");
-    //     }
-    // },[prodId]);
-
-    // if(!selectedProd) { return(''); }
-    
-    // const handleProdSelect = (prodId) => {
-    //     setProdId(prodId);
-    // }
