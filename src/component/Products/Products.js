@@ -26,15 +26,17 @@ function Products () {
     
 return(
     <section className='products'>
-        {products.map(prod =>
-                    <Link className='best__link' key={prod.id} to={`/products/${prod.id}`}>
-                        <ProductCard
-                            key={prod.id} 
-                            bestProd={prod}
-                            // handleProdSelect={handleProdSelect}
-                        />
-                    </Link>
-                )}
+        <section className='products__container'>
+            {products.map(prod =>
+                        <Link className='best__link' key={prod.id} to={`/products/${prod.id}`}>
+                            <ProductCard
+                                key={prod.id} 
+                                bestProd={prod}
+                                // handleProdSelect={handleProdSelect}
+                            />
+                        </Link>
+                    )}
+        </section>
     </section>
 )
 }

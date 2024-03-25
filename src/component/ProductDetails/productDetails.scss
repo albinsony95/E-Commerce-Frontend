@@ -10,6 +10,7 @@
     &__container-mainImgBox{
         max-width: 90%;
         max-height: 20rem;
+        margin-bottom: 1rem;
     }
     &__mainImgBox--img{
         object-fit: cover;
@@ -19,9 +20,82 @@
         @include flex-box(row,center,center);
         max-width: 100%;
         max-height: 15rem;
+        padding:2px;
+        margin-top: 5px;
+        @include tablet{
+            max-width: 100%;
+            max-height:10rem;
+            margin: 5px;
+        }
+        @include desktop{
+            max-width: 100%;
+            max-height:10rem;
+            margin: 5px;
+        }
+    }
+    &__subImgBox-imgbox{
+        @include flex-box(row,center,center);
+        max-width: 100%;
+        max-height: 15rem;
+        border:1px solid #5f5754;
+        margin: 5px;
+        @include tablet{
+            max-width: 100%;
+            max-height:10rem;
+            margin: 5px;
+        }
+        @include desktop{
+            max-width: 100%;
+            max-height:10rem;
+            margin: 5px;
+        }
     }
     &__subImgBox-imgbox--img{
         object-fit: cover;
         width: 90%;
+        max-width: 100%;
+        max-height:10rem;
+        margin: 5px;
+        @include tablet{
+            max-width: 100%;
+            max-height:10rem;
+            margin: 5px;
+        }
+        @include desktop{
+            max-width: 100%;
+            max-height:10rem;
+            margin: 5px;
+        }
+    }
+    &__container-info2-btnQuantity{
+        background: transparent;
+        border: none;
+        font-size: 2em;
+        padding:1rem;
+        :hover{
+            color:aqua;
+        }
+    }
+    &__container-info2-Quantitydata{
+        font-size: 2em;
+        color:#db4307;
+    }
+    &__container-info2-pricedata{
+        font-size: 2em;
+        font-weight: 500;
+    }
+    &__addCartButton{
+        font-size: 1.2em;
+        width:100%;
+        margin: 0%;
+        border-radius: 10px;;
+        background-color: #3b3769;
+        color: $pluton-white;
+        padding:1rem;
+        margin: .5rem 0 .25rem 0;
+        cursor: pointer;
+        @include desktop{
+            width: 50%;
+        }
     }
 }
